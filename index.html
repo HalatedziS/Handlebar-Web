@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Web Page</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper blue darken-4">
+            <a href="#" class="brand-logo">Personal Website</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#whichCity">Which City</a></li>
+                <li><a href="#foreignLanguage">Foreign Language</a></li>
+                <li><a href="#favouriteSubjects">Favourite Subjects</a></li>
+                <li><a href="#historicCity">Historic City</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="introduction" class="section">
+            <h1 class="center-align">Introduction</h1>
+            <div class="row">
+                <div class="col s12 m6">
+                    <h2 class="center-align">{{introduction.fullName}}</h2>
+                    <img src="{{introduction.photo}}" class="circle responsive-img" alt="{{introduction.fullName}}">
+                </div>
+                <div class="col s12 m6">
+                    <p class="flow-text">{{introduction.intro}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="whichCity" class="section">
+            <h1 class="center-align">{{whichCity.city}}</h1>
+            <div class="row">
+                <div class="col s12">
+                    <img src="{{whichCity.photo}}" class="responsive-img" alt="{{whichCity.city}}">
+                    <p class="flow-text">{{whichCity.description}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="foreignLanguage" class="section">
+            <h1 class="center-align">Foreign Language</h1>
+            <h3>{{foreignLanguage.language}}</h3>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>English Phrase</th>
+                        <th>Foreign Phrase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each foreignLanguage.phrases}}
+                    <tr>
+                        <td>{{this.englishPhrase}}</td>
+                        <td>{{this.foreignLanguage}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="favouriteSubjects" class="section">
+            <h1 class="center-align">Favourite Subjects</h1>
+            {{#each favouriteSubjects.subjects}}
+            <div class="row">
+                <div class="col s12 m6">
+                    <h4>{{this.name}}</h4>
+                    <img src="{{this.photo}}" alt="{{this.name}}" class="responsive-img">
+                </div>
+                <div class="col s12 m6">
+                    <p>{{this.description}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+       
+        <div id="historicCity" class="section">
+            <h1 class="center-align">Historic Places</h1>
+            <div class="historic-city-container">
+                <!-- Historic city items -->
+                {{#each historicCity.city}}
+                <div class="historic-city-item">
+                    <h4>{{this.name}}</h4>
+                    <img src="{{this.photo}}" alt="{{this.name}}" class="responsive-img">
+                    <p>{{this.description}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        
+
+    </div>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
